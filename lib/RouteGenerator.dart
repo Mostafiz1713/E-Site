@@ -1,5 +1,5 @@
-import 'package:e_site/FirstPage.dart';
-import 'package:e_site/SecondPage.dart';
+import 'file:///C:/Users/Dirilis/Desktop/E-Site/lib/Pages/FirstPage.dart';
+import 'package:e_site/Pages/ProductsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:e_site/main.dart';
 
@@ -10,8 +10,8 @@ class RouteGenerator {
 		switch (settings.name) {
 			case '/':
 				return MaterialPageRoute(builder: (_) => FirstPage());
-			case '/second':
-				return MaterialPageRoute(builder: (_) => SecondPage());
+			case 'ProductsPage':
+				return MaterialPageRoute(builder: (_) => ProductsPage());
 			default:
 			// If there is no such named route in the switch statement, e.g. /third
 				return _errorRoute();
