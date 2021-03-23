@@ -11,7 +11,7 @@ class RouteGenerator {
 			case '/':
 				return MaterialPageRoute(builder: (_) => FirstPage());
 			case 'ProductsPage':
-				return MaterialPageRoute(builder: (_) => ProductsPage());
+				return MaterialPageRoute(builder: (_) => ProductsPage(args));
 			default:
 			// If there is no such named route in the switch statement, e.g. /third
 				return _errorRoute();

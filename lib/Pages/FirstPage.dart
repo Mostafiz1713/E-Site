@@ -73,6 +73,7 @@ class _FirstPageState extends State<FirstPage> {
                                 Navigator.of(context).popAndPushNamed(
                                     "ProductsPage",
                                     arguments: brand.id);
+                                print("Brannnnddddddddddddddddd ID ::::::::::   ${brand.id}");
                               })
                         ],
                       ),

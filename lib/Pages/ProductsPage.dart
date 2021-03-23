@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class ProductsPage extends StatefulWidget {
   final int id;
 
-  ProductsPage({Key key, @required this.id}) : super(key: key);
+  ProductsPage(this.id);
 
   @override
   _ProductsPageState createState() => _ProductsPageState();
@@ -17,7 +17,9 @@ class _ProductsPageState extends State<ProductsPage> {
 
   @override
   void initState() {
-    _productsModel = APIManager().getProduct(widget.id);
+    //_productsModel = APIManager().getProduct(widget.id);
+    _productsModel = APIManager().getProduct();
+
     print("Brannnnddddddddddddddddd ID ::::::::::   ${widget.id}");
     super.initState();
   }
@@ -29,62 +31,68 @@ class _ProductsPageState extends State<ProductsPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_rounded),
           onPressed: () {
-            Navigator.of(context).popAndPushNamed(
-                "/");
+            Navigator.of(context).popAndPushNamed("/");
           },
         ),
       ),
       body: Container(
         child: FutureBuilder<ProductsModel>(
-          future: _productsModel,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                  itemCount: snapshot.data.results.data.length,
-                  itemBuilder: (context, index) {
-                    var product = snapshot.data.results.data[index];
-                    return Container(
-                      height: 100,
-                      margin: const EdgeInsets.all(8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Card(
-                            clipBehavior: Clip.antiAlias,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(24),
-                            ),
-                            child: AspectRatio(
-                              aspectRatio: 1,
-                              child: Image.network(
-                                Url.BaseURL + product.logo,
-                                fit: BoxFit.fill,
-                              ),
+        future: _productsModel,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+                itemCount: snapshot.data.results.data.length,
+                itemBuilder: (context, index) {
+                  var product = snapshot.data.results.data[index];
+                  return Container(
+                    height: 100,
+                    margin: const EdgeInsets.all(8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                       /* Card(
+                          clipBehavior: Clip.antiAlias,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: AspectRatio(
+                            aspectRatio: 1,
+                            child: Image.network(
+                             Url.BaseURL + product.photos,
+                              fit: BoxFit.fill,
                             ),
                           ),
-                          SizedBox(width: 16),
-                          Flexible(
-                            child: Text(
-                              product.name,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
+                        ),*/
+                        SizedBox(width: 16),
+                        Flexible(
+                          child: Text(
+                            product.name,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          /*IconButton(
-                              icon: Icon(Icons.fast_forward_rounded),
-                              onPressed: () {
-                                Navigator.of(context).popAndPushNamed(
-                                    "ProductsPage",
-                                    arguments: brand.id);
-                              })*/
-                        ],
-                      ),
-                    );
-                  });
-            }
-          },
-        ),
+                        ),
+                        Text(
+                          product.id.toString(),
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        /*IconButton(
+                            icon: Icon(Icons.fast_forward_rounded),
+                            onPressed: () {
+                              Navigator.of(context).popAndPushNamed(
+                                  "ProductsPage",
+                                  arguments: brand.id);
+                              print("Brannnnddddddddddddddddd ID ::::::::::   ${brand.id}");
+                            })*/
+                      ],
+                    ),
+                  );
+                });
+          } else
+            return Center(child: CircularProgressIndicator());
+        },
+      ),
       ),
     );
   }

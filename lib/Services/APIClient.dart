@@ -25,7 +25,7 @@ class APIManager {
     return brandModel;
   }
   
-  Future<ProductsModel> getProduct(int id) async {
+  Future<ProductsModel> getProduct() async {
     var client = http.Client();
     var productsModel = null;
     
@@ -34,6 +34,7 @@ class APIManager {
       if (response.statusCode == 200){
         var jsonString = response.body;
         var jsonMap = jsonDecode(jsonString);
+        //print("Braaaaaaaaaaaaaaaaaaaaaaaaaaaad API   :::::::::::::::::: ${Url.BrannedProductAPI+"?brand_id="+id.toString()}");
 
         productsModel = ProductsModel.fromJson(jsonMap);
       }
@@ -42,6 +43,7 @@ class APIManager {
     }
     return productsModel;
   }
+
   Future<NewsModel> getNews() async {
     var client = http.Client();
     var newsModel = null;
