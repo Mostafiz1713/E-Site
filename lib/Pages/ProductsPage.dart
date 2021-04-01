@@ -4,9 +4,9 @@ import 'package:e_site/Services/APIClient.dart';
 import 'package:flutter/material.dart';
 
 class ProductsPage extends StatefulWidget {
-  final int id;
+ /* final int id;
 
-  ProductsPage(this.id);
+  ProductsPage(this.id);*/
 
   @override
   _ProductsPageState createState() => _ProductsPageState();
@@ -20,7 +20,7 @@ class _ProductsPageState extends State<ProductsPage> {
     //_productsModel = APIManager().getProduct(widget.id);
     _productsModel = APIManager().getProduct();
 
-    print("Brannnnddddddddddddddddd ID ::::::::::   ${widget.id}");
+    //print("Brannnnddddddddddddddddd ID ::::::::::   ${widget.id}");
     super.initState();
   }
 

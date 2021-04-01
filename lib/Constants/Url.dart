@@ -2,7 +2,7 @@ class Url {
   static var BaseURL = "http://smartcommercebd.com/";
   static var BaseURLAPI = "http://smartcommercebd.com/apii/";
   static var BrandAPI = "http://smartcommercebd.com/apii/brands";
-  static var BrannedProductAPI = "http://smartcommercebd.com/apii/category/products/1";
+  static var ProductsAPI = "http://smartcommercebd.com/apii/category/products/1";
 
 
 

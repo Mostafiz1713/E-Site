@@ -30,7 +30,7 @@ class APIManager {
     var productsModel = null;
     
     try{
-      var response = await client.get(Uri.parse(Url.BrannedProductAPI));
+      var response = await client.get(Uri.parse(Url.ProductsAPI));
       if (response.statusCode == 200){
         var jsonString = response.body;
         var jsonMap = jsonDecode(jsonString);
