@@ -6,10 +6,10 @@ import 'orderPage.dart';
 
 class MainScreen extends StatefulWidget {
   @override
-  _MainScreenState createState() => _MainScreenState();
+  MainScreenState createState() => MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class MainScreenState extends State<MainScreen> {
   var message = 'Do you really want close?';
   int currentIndex = 0;
   List<Widget> pages;
@@ -34,10 +34,11 @@ class _MainScreenState extends State<MainScreen> {
     super.initState();
     newProductPage = NewProductPage((selectedProduct) {
       setState(() {
-        cart.add(selectedProduct);//update
+        cart.add(selectedProduct); //update
         //if(selectedProduct.categoryID == selectedProduct.categoryID)
 
-        print("Selected Product ::::::::::::::::::::::::::::  ${selectedProduct.categoryID}");
+        print(
+            "Selected Product ::::::::::::::::::::::::::::  ${selectedProduct.categoryID}");
         //sum = 0;
         /*cart.forEach(
           (item) {

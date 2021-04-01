@@ -67,9 +67,10 @@ class _NewProductPageState extends State<NewProductPage> {
               itemCount: _categories.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: (){
+                  onTap: () {
                     widget._valueSetter(_categories[index]);
-                    Toast.show("Successfully Added to Cart", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                    Toast.show("Successfully Added to Cart", context,
+                        duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
                   },
                   child: Container(
                     child: Column(
@@ -97,7 +98,8 @@ class _NewProductPageState extends State<NewProductPage> {
                           ),
                         ),
                         Text(
-                          "Price : " + _categories[index].categoryPrice.toString(),
+                          "Price : " +
+                              _categories[index].categoryPrice.toString(),
                           style: textStyleCategory,
                         ),
                       ],
@@ -111,4 +113,6 @@ class _NewProductPageState extends State<NewProductPage> {
       ),
     );
   }
+
+  calculation() {}
 }

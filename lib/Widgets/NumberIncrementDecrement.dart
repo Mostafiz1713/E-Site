@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+typedef ItemCount = Function(int);
+
 class NumberIncrementDecrement extends StatefulWidget {
+  ItemCount itemCount;
+
+  NumberIncrementDecrement({this.itemCount});
+
   @override
   _NumberIncrementDecrementState createState() =>
       _NumberIncrementDecrementState();
@@ -82,6 +88,8 @@ class _NumberIncrementDecrementState extends State<NumberIncrementDecrement> {
                             print(
                                 "Controoooooooooooooollller  ::::::: ${_controller.text}");
                             numberCounter = _controller.text;
+
+                            widget.itemCount(int.parse(_controller.value.text));
                           });
                         },
                       ),
@@ -95,6 +103,7 @@ class _NumberIncrementDecrementState extends State<NumberIncrementDecrement> {
                         int currentValue = int.parse(_controller.text);
                         setState(() {
                           print("Setting state");
+
                           currentValue--;
                           _controller.text =
                               (currentValue > 0 ? currentValue : 0)
@@ -102,6 +111,8 @@ class _NumberIncrementDecrementState extends State<NumberIncrementDecrement> {
                           print(
                               "Controoooooooooooooollller  ::::::: ${_controller.text}");
                           numberCounter = _controller.text;
+                          widget.itemCount(int.parse(_controller.value.text));
+                          widget.itemCount(int.parse(_controller.value.text));
                         });
                       },
                     ),
